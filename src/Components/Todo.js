@@ -12,8 +12,12 @@ function Todo() {
    
     const addTodos = ()=>{
         if (todo.trim()) {
-        setTodos([...todos,{list:todo,id:Date.now(),status:false}])
-        setTodo('')
+            const isDuplicate = todos.find((item) => item.list === todo.trim())
+            console.log(isDuplicate)
+            if (!isDuplicate) {
+                setTodos([...todos, { list: todo.trim(), id: Date.now(), status: false }])
+                setTodo('')
+              }
         }
     }
     const onComplete = (id)=>{
